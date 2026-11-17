@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" role="img">
+  <title>JustButton favicon</title>
+  <defs>
+    <linearGradient id="jb-favicon-gradient" gradientUnits="userSpaceOnUse" x1="4.5" y1="6.2" x2="14" y2="14">
+      <stop stop-color="#B453FA"/>
+      <stop offset="1" stop-color="#611AE2"/>
+    </linearGradient>
+  </defs>
+  <path d="M1.05 6.85l1.65.35M2.65 3.65L4 5M5.75 2.7l.2 1.65" fill="none" stroke="#A245F2" stroke-width="1.5" stroke-linecap="round"/>
+  <rect x="3.75" y="6.2" width="11.95" height="7.8" rx="3.9" fill="url(#jb-favicon-gradient)"/>
+  <path fill="#FFF" d="M8.65 8.13q-.15-.62.47-.37l4.6 1.76q.53.2.01.42l-1.31.55 1.27 1.31q.24.24 0 .47l-.61.59q-.24.22-.47-.02l-1.33-1.37-.71 1.36q-.25.44-.41-.04Z"/>
+</svg>
