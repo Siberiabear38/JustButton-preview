@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ru">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Проверка виджета JustButton</title>
+<style>
+  :root { color-scheme: light dark; font: 16px/1.6 system-ui, sans-serif; }
+  body { margin: 0; }
+  main { max-width: 42rem; margin: 12vh auto 0; padding: 1.5rem; }
+  h1 { font-size: clamp(1.75rem, 5vw, 2.5rem); line-height: 1.2; }
+  nav { display: flex; flex-wrap: wrap; gap: .75rem; margin-block: 1.5rem; }
+  nav a { border: 1px solid currentColor; border-radius: .35rem; padding: .5rem .9rem; color: inherit; text-decoration: none; }
+  nav a:hover, nav a[aria-current="page"] { background: #285fc9; border-color: #285fc9; color: #fff; }
+</style>
+<main>
+  <h1>Проверка виджета JustButton</h1>
+  <nav aria-label="Вариант виджета">
+    <a href="?mode=telegram" id="telegram">Кнопка Telegram</a>
+    <a href="?mode=multi" id="multi">Мультикнопка</a>
+  </nav>
+  <p id="instruction"></p>
+  <p id="load-error" role="alert" hidden>Виджет не загрузился. Обновите страницу, чтобы повторить проверку.</p>
+  <p><a href="https://dev.justbutton.ru/#builder">Открыть конструктор JustButton</a></p>
+</main>
+<script>
+  const sources = {
+    telegram: 'https://dev.justbutton.ru/api/widget/eyJzaXRlIjoic2liZXJpYWJlYXIzOC5naXRodWIuaW8iLCJkZXNrdG9wIjoyNCwibW9iaWxlIjoxNiwibGFiZWwiOiLQndCw0L_QuNGB0LDRgtGMINCyIFRlbGVncmFtIiwibWVzc2VuZ2VyIjoidGVsZWdyYW0iLCJsaW5rIjoiaHR0cHM6Ly90Lm1lL3RlbGVncmFtIn0.83cUCQ33ya2ryesSlLoWEC3uoxJmNxNgkFD3prMmgsg',
+    multi: 'https://dev.justbutton.ru/api/widget/eyJzaXRlIjoic2liZXJpYWJlYXIzOC5naXRodWIuaW8iLCJkZXNrdG9wIjoyNCwibW9iaWxlIjoxNiwibGFiZWwiOiLQnNGLINC-0L3Qu9Cw0LnQvSEiLCJtZXNzZW5nZXIiOiJtdWx0aSIsImNvbnRhY3RzIjpbeyJtZXNzZW5nZXIiOiJ0ZWxlZ3JhbSIsImxpbmsiOiJodHRwczovL3QubWUvdGVsZWdyYW0ifSx7Im1lc3NlbmdlciI6InZrIiwibGluayI6Imh0dHBzOi8vdmsuY29tL3ZrIn1dfQ.oEKXuSYGRpTvGBd8jAqH9JwDf5LrfzogMyO7b_lharA',
+  };
+  const mode = new URLSearchParams(location.search).get('mode') === 'multi' ? 'multi' : 'telegram';
+  document.getElementById(mode).setAttribute('aria-current', 'page');
+  document.getElementById('instruction').textContent = mode === 'multi'
+    ? 'Нажмите «Мы онлайн!» в правом нижнем углу, чтобы открыть список мессенджеров.'
+    : 'Кнопка в правом нижнем углу ведёт на публичный канал Telegram.';
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = sources[mode];
+  script.addEventListener('error', () => { document.getElementById('load-error').hidden = false; });
+  document.head.append(script);
+</script>
+</html>
